@@ -3,7 +3,7 @@ const cors = require("cors");
 const app = express();
 require("dotenv").config();
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 
 // Middle Ware
 app.use(cors());
@@ -26,8 +26,16 @@ async function run() {
     await client.connect();
 
     const jobCollection = client.db("FreelanceBD").collection("Jobs");
+    const bidsCollection = client.db("FreelanceBD").collection("Bids");
 
-    // Get All Jobs by filtering 
+    // Post a job 
+    app.post("/jobs", async (req, res) => {
+      const jobs = req.body;
+      const result = await jobCollection.insertOne(jobs);
+      res.send(result);
+    });
+
+    // Get All Jobs by filtering
     app.get("/jobs", async (req, res) => {
       let query = {};
       const { category } = req.query;
@@ -38,13 +46,27 @@ async function run() {
       res.send(result);
     });
 
-    // Get single Jobs 
-    app.get('/details/:id', async(req, res)=>{
+    // Get single Jobs
+    app.get("/details/:id", async (req, res) => {
       const id = req.params.id;
-      const query = {_id: new ObjectId(id)}
+      const query = { _id: new ObjectId(id) };
       const result = await jobCollection.findOne(query);
+      res.send(result);
+    });
+
+    app.post('/bids', async(req, res)=>{
+      const jobs = req.body;
+      const result = await bidsCollection.insertOne(jobs);
+      res.send(result);
+    })
+
+    app.get('/bids', async(req, res)=> {
+      const {email} = req.query;
+      console.log(email)
+      const result = await bidsCollection.find({userEmail : email}).toArray()
       res.send(result)
     })
+
 
     await client.db("admin").command({ ping: 1 });
     console.log(
