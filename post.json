@@ -1,0 +1,275 @@
+[
+  {
+    "category": "Web_Design",
+    "job_title": "Portfolio Website Redesign",
+    "deadline": "2023-12-25",
+    "price_range": "$400 - $700",
+    "description": "Redesign our portfolio website to showcase our latest projects and skills. Focus on creating an aesthetically pleasing and user-friendly interface.",
+    "project_requirements": [
+      "Proficiency in HTML, CSS, and JavaScript",
+      "Creative layout and typography skills",
+      "Responsive design for various devices",
+      "Integration of multimedia elements",
+      "Ability to optimize website performance"
+    ],
+    "job_type": "Fixed-term Contract",
+    "user_image": "https://i.ibb.co/0Yvz4Fp/user4.jpg",
+    "user_name": "Eva Carter"
+  },
+  {
+    "category": "Web_Design",
+    "job_title": "Event Website Development",
+    "deadline": "2023-12-30",
+    "price_range": "$600 - $1000",
+    "description": "Develop a website for our upcoming event. Include features for event schedule, ticket booking, and speaker profiles. Ensure smooth navigation and seamless user experience.",
+    "project_requirements": [
+      "Proficiency in HTML, CSS, and JavaScript",
+      "Experience with event management websites",
+      "User-friendly ticket booking system",
+      "Integration of social media feeds",
+      "Collaboration with event organizers"
+    ],
+    "job_type": "Fixed-term Contract",
+    "user_image": "https://i.ibb.co/3R2sWx5/user5.jpg",
+    "user_name": "Daniel Parker"
+  },
+  {
+    "category": "Web_Design",
+    "job_title": "Blog Redesign for Lifestyle Website",
+    "deadline": "2023-12-18",
+    "price_range": "$300 - $500",
+    "description": "Redesign our lifestyle blog with a modern and visually appealing layout. Focus on improving readability, optimizing images, and integrating social media sharing options.",
+    "project_requirements": [
+      "Proficiency in HTML, CSS, and JavaScript",
+      "Creative blog post layout design",
+      "Integration of social media sharing buttons",
+      "Optimization for search engines",
+      "Collaboration with content creators"
+    ],
+    "job_type": "Fixed-term Contract",
+    "user_image": "https://i.ibb.co/Gt5MVmH/user6.jpg",
+    "user_name": "Emma Davis"
+  },
+  {
+    "category": "Web_Design",
+    "job_title": "Educational Platform UI/UX Design",
+    "deadline": "2023-12-22",
+    "price_range": "$800 - $1200",
+    "description": "Design intuitive user interfaces and engaging user experiences for our educational platform. Focus on interactive elements, progress tracking, and seamless navigation.",
+    "project_requirements": [
+      "Proficiency in UI/UX design tools",
+      "Experience with educational platforms",
+      "Interactive learning module design",
+      "Progress tracking and reporting features",
+      "User testing and feedback implementation"
+    ],
+    "job_type": "Fixed-term Contract",
+    "user_image": "https://i.ibb.co/sycStBb/user7.jpg",
+    "user_name": "James Smith"
+  },
+  {
+    "category": "Web_Design",
+    "job_title": "Travel Agency Website Redesign",
+    "deadline": "2023-12-28",
+    "price_range": "$500 - $900",
+    "description": "Redesign our travel agency website with a focus on inspiring travel destinations, user-friendly booking systems, and visually appealing travel packages.",
+    "project_requirements": [
+      "Proficiency in HTML, CSS, and JavaScript",
+      "Creative design for travel packages",
+      "Integration of booking APIs",
+      "High-quality destination imagery",
+      "Collaboration with travel experts"
+    ],
+    "job_type": "Fixed-term Contract",
+    "user_image": "https://i.ibb.co/fD2DtmV/user8.jpg",
+    "user_name": "Sophia Johnson"
+  },
+  {
+    "category": "Digital_Marketing",
+    "job_title": "Social Media Advertising Specialist",
+    "deadline": "2023-12-20",
+    "price_range": "$500 - $800",
+    "description": "Create and manage social media advertising campaigns on platforms like Facebook, Instagram, and LinkedIn. Optimize ad performance, target specific audiences, and generate leads for our business.",
+    "project_requirements": [
+      "Experience in social media advertising",
+      "Knowledge of ad platforms and tools",
+      "A/B testing and ad performance analysis",
+      "Creative ad copywriting skills",
+      "Ability to track and report ROI"
+    ],
+    "job_type": "Fixed-term Contract",
+    "user_image": "https://i.ibb.co/sycStBb/user9.jpg",
+    "user_name": "Daniel Carter"
+  },
+  {
+    "category": "Digital_Marketing",
+    "job_title": "Content Marketing Strategist",
+    "deadline": "2023-12-25",
+    "price_range": "$600 - $1000",
+    "description": "Develop and implement a content marketing strategy to enhance brand visibility and engage the target audience. Create compelling blog posts, videos, and infographics. Monitor content performance and adjust strategies as needed.",
+    "project_requirements": [
+      "Experience in content marketing",
+      "Content creation and editing skills",
+      "SEO optimization for content",
+      "Knowledge of content management systems",
+      "Ability to analyze audience engagement"
+    ],
+    "job_type": "Fixed-term Contract",
+    "user_image": "https://i.ibb.co/0Yvz4Fp/user10.jpg",
+    "user_name": "Emma Johnson"
+  },
+  {
+    "category": "Digital_Marketing",
+    "job_title": "PPC Campaign Manager",
+    "deadline": "2023-12-30",
+    "price_range": "$700 - $1200",
+    "description": "Manage pay-per-click (PPC) advertising campaigns on Google Ads and other platforms. Conduct keyword research, create compelling ad copies, and optimize landing pages. Monitor and adjust campaigns to maximize ROI.",
+    "project_requirements": [
+      "Experience in PPC advertising",
+      "Keyword research and analysis skills",
+      "Ad copywriting and design abilities",
+      "Landing page optimization knowledge",
+      "Conversion tracking and analysis"
+    ],
+    "job_type": "Fixed-term Contract",
+    "user_image": "https://i.ibb.co/3R2sWx5/user11.jpg",
+    "user_name": "Michael Davis"
+  },
+  {
+    "category": "Digital_Marketing",
+    "job_title": "Influencer Marketing Coordinator",
+    "deadline": "2023-12-28",
+    "price_range": "$400 - $700",
+    "description": "Collaborate with influencers to create engaging content and promote our brand. Identify suitable influencers, negotiate partnerships, and track campaign performance. Build relationships with influencers to ensure successful collaborations.",
+    "project_requirements": [
+      "Experience in influencer marketing",
+      "Influencer identification skills",
+      "Negotiation and partnership management",
+      "Campaign tracking and analysis",
+      "Strong communication skills"
+    ],
+    "job_type": "Fixed-term Contract",
+    "user_image": "https://i.ibb.co/fD2DtmV/user12.jpg",
+    "user_name": "Olivia Smith"
+  },
+  {
+    "category": "Digital_Marketing",
+    "job_title": "Video Marketing Specialist",
+    "deadline": "2023-12-22",
+    "price_range": "$500 - $900",
+    "description": "Create compelling video content for marketing campaigns. Develop video scripts, storyboard concepts, and oversee video production. Optimize videos for various platforms and monitor viewer engagement metrics.",
+    "project_requirements": [
+      "Experience in video production",
+      "Scriptwriting and storyboarding skills",
+      "Video editing and animation abilities",
+      "Platform-specific video optimization",
+      "Analytical skills for performance tracking"
+    ],
+    "job_type": "Fixed-term Contract",
+    "user_image": "https://i.ibb.co/sycStBb/user13.jpg",
+    "user_name": "Sophia Davis"
+  },
+  {
+    "category": "Graphics_Design",
+    "job_title": "Logo Design for Startup",
+    "deadline": "2023-12-14",
+    "price_range": "$200 - $350",
+    "description": "Design a unique and memorable logo for a tech startup. The logo should represent innovation and modernity.",
+    "project_requirements": [
+      "Creative logo design skills",
+      "Understanding of branding principles",
+      "Ability to create versatile logo variations",
+      "Strong communication skills for client consultations",
+      "Portfolio showcasing diverse logo designs"
+    ],
+    "job_type": "Fixed-term Contract",
+    "user_image": "https://i.ibb.co/VC8CCwL/user7.jpg",
+    "user_name": "Aiden Turner"
+  },
+  {
+    "category": "Graphics_Design",
+    "job_title": "Print Advertisement Design",
+    "deadline": "2023-12-26",
+    "price_range": "$150 - $300",
+    "description": "Create visually appealing print advertisements for a marketing campaign. Designs will be used in magazines and newspapers.",
+    "project_requirements": [
+      "Proficiency in print design software",
+      "Knowledge of print production processes",
+      "Typography and layout design skills",
+      "Ability to create high-resolution files for printing",
+      "Attention to color accuracy and image quality"
+    ],
+    "job_type": "Fixed-term Contract",
+    "user_image": "https://i.ibb.co/jRycByv/user8.jpg",
+    "user_name": "Olivia Parker"
+  },
+  {
+    "category": "Graphics_Design",
+    "job_title": "Packaging Design for Product",
+    "deadline": "2023-12-30",
+    "price_range": "$300 - $500",
+    "description": "Design eye-catching packaging for a new product launch. The packaging should reflect the product's features and brand identity.",
+    "project_requirements": [
+      "Experience in packaging design",
+      "Knowledge of packaging materials and printing techniques",
+      "Creative packaging structure ideas",
+      "Attention to detail in label and information design",
+      "Ability to create 3D mockups for client presentation"
+    ],
+    "job_type": "Fixed-term Contract",
+    "user_image": "https://i.ibb.co/7GNtnrZ/user9.jpg",
+    "user_name": "Ethan Wilson"
+  },
+  {
+    "category": "Graphics_Design",
+    "job_title": "Book Cover Design for Fiction Novel",
+    "deadline": "2023-12-31",
+    "price_range": "$250 - $400",
+    "description": "We are an independent author looking for a graphics designer to create an eye-catching book cover for our upcoming fiction novel. The cover should capture the essence of the story, evoke emotions, and appeal to the target audience. Creativity, understanding of book cover design trends, and collaboration for concept development are essential.",
+    "project_requirements": [
+      "Experience in book cover design for various genres",
+      "Ability to convey the book's theme through visuals",
+      "Understanding of typography and layout for book covers",
+      "Willingness to iterate designs based on author feedback",
+      "Portfolio showcasing previous successful book cover designs"
+    ],
+    "job_type": "Fixed-price",
+    "user_image": "https://i.ibb.co/VC8CCwL/user10.jpg",
+    "user_name": "Aiden Turner"
+  },
+  {
+    "category": "Graphics_Design",
+    "job_title": "Banner Design for Online Store",
+    "deadline": "2023-12-18",
+    "price_range": "$100 - $200",
+    "description": "Create visually appealing banners for our online store. Banners will be used for product promotions, seasonal sales, and special offers. Must capture the attention of visitors and enhance the overall shopping experience.",
+    "project_requirements": [
+      "Proficiency in graphic design software",
+      "Creative mindset for compelling banner concepts",
+      "Understanding of online store aesthetics",
+      "Ability to create animated banners (optional)",
+      "Quick turnaround time for urgent promotions"
+    ],
+    "job_type": "Fixed-price",
+    "user_image": "https://i.ibb.co/9yL8jzr/user11.jpg",
+    "user_name": "Emma Watson"
+  },
+  {
+    "category": "Graphics_Design",
+    "job_title": "Infographic Design for Educational Content",
+    "deadline": "2023-12-22",
+    "price_range": "$150 - $250",
+    "description": "Design informative and visually appealing infographics for our educational content. Infographics will be used to explain complex topics in a simple and engaging manner. Clear communication of information and creative design elements are crucial.",
+    "project_requirements": [
+      "Experience in infographic design",
+      "Ability to simplify complex information",
+      "Creative use of visuals and icons",
+      "Knowledge of color theory and readability",
+      "Collaborative mindset for content understanding"
+    ],
+    "job_type": "Fixed-price",
+    "user_image": "https://i.ibb.co/Mg32gjZ/user12.jpg",
+    "user_name": "Michael Clark"
+  }
+]
+
