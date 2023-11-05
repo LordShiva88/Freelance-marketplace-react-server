@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 require("dotenv").config();
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const port = process.env.PORT || 5000;
 
 // Middle Ware
@@ -27,6 +27,7 @@ async function run() {
 
     const jobCollection = client.db("FreelanceBD").collection("Jobs");
 
+    // Get All Jobs by filtering 
     app.get("/jobs", async (req, res) => {
       let query = {};
       const { category } = req.query;
@@ -36,6 +37,14 @@ async function run() {
       const result = await jobCollection.find(query).toArray();
       res.send(result);
     });
+
+    // Get single Jobs 
+    app.get('/details/:id', async(req, res)=>{
+      const id = req.params.id;
+      const query = {_id: new ObjectId(id)}
+      const result = await jobCollection.findOne(query);
+      res.send(result)
+    })
 
     await client.db("admin").command({ ping: 1 });
     console.log(
