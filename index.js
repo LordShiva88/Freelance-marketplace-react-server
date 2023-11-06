@@ -38,9 +38,12 @@ async function run() {
     // Get All Jobs by filtering
     app.get("/jobs", async (req, res) => {
       let query = {};
-      const { category } = req.query;
+      const { category, email } = req.query;
       if (category) {
         query = { category: category };
+      }
+      if(email){
+        query = {email: email}
       }
       const result = await jobCollection.find(query).toArray();
       res.send(result);
