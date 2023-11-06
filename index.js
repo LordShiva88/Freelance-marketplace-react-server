@@ -28,7 +28,7 @@ async function run() {
     const jobCollection = client.db("FreelanceBD").collection("Jobs");
     const bidsCollection = client.db("FreelanceBD").collection("Bids");
 
-    // Post a job 
+    // Post a job
     app.post("/jobs", async (req, res) => {
       const jobs = req.body;
       const result = await jobCollection.insertOne(jobs);
@@ -42,34 +42,77 @@ async function run() {
       if (category) {
         query = { category: category };
       }
-      if(email){
-        query = {email: email}
+      if (email) {
+        query = { email: email };
       }
       const result = await jobCollection.find(query).toArray();
       res.send(result);
     });
 
+    // Delete Job
+    app.delete("/jobs/:id", async (req, res) => {
+      const id = req.params;
+      console.log(id);
+      const query = { _id: new ObjectId(id) };
+      const result = await jobCollection.deleteOne(query);
+      res.send(result);
+    });
+
+    // Update Job
+    app.put("/jobs/:id", async (req, res) => {
+      const id = req.params.id;
+      const updateData = req.body;
+      console.log(id);
+      const query = { _id: new ObjectId(id) };
+      const options = { upsert: true };
+      const updateDoc = {
+        $set: {
+          category:updateData.deadline,
+          deadline:updateData.category,
+          description:updateData.description,
+          job_title:updateData.job_title,
+          maximum_price:updateData.maximum_price,
+          minimum_price:updateData.minimum_price,
+        },
+      };
+      const result = await jobCollection.updateOne(query, updateDoc, options);
+      res.send(result);
+    });
+
     // Get single Jobs
-    app.get("/details/:id", async (req, res) => {
+    app.get("/jobs/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await jobCollection.findOne(query);
       res.send(result);
     });
 
-    app.post('/bids', async(req, res)=>{
+    app.post("/bids", async (req, res) => {
       const jobs = req.body;
       const result = await bidsCollection.insertOne(jobs);
       res.send(result);
-    })
+    });
 
-    app.get('/bids', async(req, res)=> {
-      const {email} = req.query;
-      console.log(email)
-      const result = await bidsCollection.find({userEmail : email}).toArray()
-      res.send(result)
-    })
+    // Get data using Email
+    app.get("/bids", async (req, res) => {
+      let query = {};
+      const { email } = req.query;
+      if (email) {
+        query = { userEmail: email };
+      }
+      const result = await bidsCollection.find(query).toArray();
+      res.send(result);
+    });
 
+    app.get("/bids/request", async (req, res) => {
+      let query = {};
+      const { email } = req.query;
+      if (email) {
+        query = { email: email };
+      }
+      const result = await bidsCollection.find(query).toArray();
+      res.send(result);
+    });
 
     await client.db("admin").command({ ping: 1 });
     console.log(
