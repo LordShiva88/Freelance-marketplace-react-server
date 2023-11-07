@@ -27,6 +27,7 @@ async function run() {
 
     const jobCollection = client.db("FreelanceBD").collection("Jobs");
     const bidsCollection = client.db("FreelanceBD").collection("Bids");
+    const testCollection = client.db("FreelanceBD").collection("Testimonials");
 
     // Post a job
     app.post("/jobs", async (req, res) => {
@@ -113,6 +114,26 @@ async function run() {
       const result = await bidsCollection.find(query).toArray();
       res.send(result);
     });
+
+    app.put("/bids/:id", async(req, res)=>{
+      const id = req.params.id;
+      const update = req.body;
+      console.log(update, id)
+      const query = {_id: new ObjectId(id)}
+      const options = {upsert: true}
+      const updateDoc = {
+        $set: {
+          status: update.status
+        },
+      };
+      const result = await bidsCollection.updateOne(query, updateDoc, options);
+      res.send(result)
+    })
+
+    app.get('/testimonials', async(req, res)=>{
+      const result = await testCollection.find().toArray();
+      res.send(result);
+    })
 
     await client.db("admin").command({ ping: 1 });
     console.log(
