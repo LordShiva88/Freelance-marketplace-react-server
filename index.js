@@ -1,17 +1,26 @@
 const express = require("express");
 const cors = require("cors");
+const jwt = require("jsonwebtoken");
 const app = express();
+var cookieParser = require("cookie-parser");
 require("dotenv").config();
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const port = process.env.PORT || 4000;
 
 // Middle Ware
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://freelance-bd.web.app"
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json());
+app.use(cookieParser());
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.rqtbidh.mongodb.net/?retryWrites=true&w=majority`;
-
-console.log(process.env.DB_USER);
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -21,13 +30,35 @@ const client = new MongoClient(uri, {
   },
 });
 
+const logger = (req, res, next) => {
+  console.log("loginfo", req.method, req.url);
+  next();
+};
+
 async function run() {
   try {
     await client.connect();
-
     const jobCollection = client.db("FreelanceBD").collection("Jobs");
     const bidsCollection = client.db("FreelanceBD").collection("Bids");
     const testCollection = client.db("FreelanceBD").collection("Testimonials");
+
+    app.post("/jwt", async (req, res) => {
+      const user = req.body;
+      const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: "1h",
+      });
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      });
+      res.send({ success: true });
+    });
+
+    app.post("/logout", async (req, res) => {
+      const user = req.body;
+      res.clearCookie("token", { maxAge: 0 }).send({ success: true });
+    });
 
     // Post a job
     app.post("/jobs", async (req, res) => {
@@ -53,7 +84,6 @@ async function run() {
     // Delete Job
     app.delete("/jobs/:id", async (req, res) => {
       const id = req.params;
-      console.log(id);
       const query = { _id: new ObjectId(id) };
       const result = await jobCollection.deleteOne(query);
       res.send(result);
@@ -63,17 +93,16 @@ async function run() {
     app.put("/jobs/:id", async (req, res) => {
       const id = req.params.id;
       const updateData = req.body;
-      console.log(id);
       const query = { _id: new ObjectId(id) };
       const options = { upsert: true };
       const updateDoc = {
         $set: {
-          category:updateData.deadline,
-          deadline:updateData.category,
-          description:updateData.description,
-          job_title:updateData.job_title,
-          maximum_price:updateData.maximum_price,
-          minimum_price:updateData.minimum_price,
+          category: updateData.deadline,
+          deadline: updateData.category,
+          description: updateData.description,
+          job_title: updateData.job_title,
+          maximum_price: updateData.maximum_price,
+          minimum_price: updateData.minimum_price,
         },
       };
       const result = await jobCollection.updateOne(query, updateDoc, options);
@@ -88,14 +117,16 @@ async function run() {
       res.send(result);
     });
 
-    app.post("/bids", async (req, res) => {
+    // Post bids
+    app.post("/bids", logger, async (req, res) => {
       const jobs = req.body;
       const result = await bidsCollection.insertOne(jobs);
       res.send(result);
     });
 
-    // Get data using Email
+    // Get my bids data using Email
     app.get("/bids", async (req, res) => {
+      console.log(req.cookies);
       let query = {};
       const { email } = req.query;
       if (email) {
@@ -115,25 +146,26 @@ async function run() {
       res.send(result);
     });
 
-    app.put("/bids/:id", async(req, res)=>{
+    // Update bids status
+    app.put("/bids/:id", async (req, res) => {
       const id = req.params.id;
       const update = req.body;
-      console.log(update, id)
-      const query = {_id: new ObjectId(id)}
-      const options = {upsert: true}
+      const query = { _id: new ObjectId(id) };
+      const options = { upsert: true };
       const updateDoc = {
         $set: {
-          status: update.status
+          status: update.status,
         },
       };
       const result = await bidsCollection.updateOne(query, updateDoc, options);
-      res.send(result)
-    })
+      res.send(result);
+    });
 
-    app.get('/testimonials', async(req, res)=>{
+    // get testimonials
+    app.get("/testimonials", async (req, res) => {
       const result = await testCollection.find().toArray();
       res.send(result);
-    })
+    });
 
     await client.db("admin").command({ ping: 1 });
     console.log(
