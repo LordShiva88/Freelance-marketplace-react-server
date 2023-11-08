@@ -132,7 +132,13 @@ async function run() {
       if (email) {
         query = { userEmail: email };
       }
-      const result = await bidsCollection.find(query).toArray();
+
+      let sortQuery = { status: 1 };
+      if (sortBy === 'statusDesc') {
+        sortQuery = { status: -1 };
+      }
+
+      const result = await bidsCollection.find(query).sort(sortQuery).toArray();
       res.send(result);
     });
 
