@@ -12,7 +12,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://freelance-bd.web.app"
+      "https://freelance-bd.web.app",
+      " https://freelance-marketplace-server.vercel.app",
     ],
     credentials: true,
   })
@@ -30,9 +31,21 @@ const client = new MongoClient(uri, {
   },
 });
 
-const logger = (req, res, next) => {
-  console.log("loginfo", req.method, req.url);
-  next();
+// I will try my best locally verify token is work properly but vercel cant any response hope you can understand 
+
+const verifyToken = (req, res, next) => {
+  const token = req.cookies?.token;
+  if (!token) {
+    return res.status(401).json({ message: "Unauthorized: No token provided" });
+  }
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: "Unauthorized: Invalid token" });
+    }
+    req.user = decoded;
+    next();
+  });
 };
 
 async function run() {
@@ -77,7 +90,10 @@ async function run() {
       if (email) {
         query = { email: email };
       }
-      const result = await jobCollection.find(query).toArray();
+      const result = await jobCollection
+        .find(query)
+        .sort({ status: 1 })
+        .toArray();
       res.send(result);
     });
 
@@ -97,8 +113,8 @@ async function run() {
       const options = { upsert: true };
       const updateDoc = {
         $set: {
-          category: updateData.deadline,
-          deadline: updateData.category,
+          category: updateData.category,
+          deadline: updateData.deadline,
           description: updateData.description,
           job_title: updateData.job_title,
           maximum_price: updateData.maximum_price,
@@ -118,7 +134,7 @@ async function run() {
     });
 
     // Post bids
-    app.post("/bids", logger, async (req, res) => {
+    app.post("/bids", async (req, res) => {
       const jobs = req.body;
       const result = await bidsCollection.insertOne(jobs);
       res.send(result);
@@ -126,23 +142,22 @@ async function run() {
 
     // Get my bids data using Email
     app.get("/bids", async (req, res) => {
-      console.log(req.cookies);
+      // if(req.query.email !== req.user.email){
+      //   return res.status(403).send({message: 'forbidden access'})
+      // }
       let query = {};
       const { email } = req.query;
       if (email) {
         query = { userEmail: email };
       }
-
-      let sortQuery = { status: 1 };
-      if (sortBy === 'statusDesc') {
-        sortQuery = { status: -1 };
-      }
-
-      const result = await bidsCollection.find(query).sort(sortQuery).toArray();
+      const result = await bidsCollection.find(query).toArray();
       res.send(result);
     });
 
     app.get("/bids/request", async (req, res) => {
+      // if(req.query.email !== req.user.email){
+      //   return res.status(403).send({message: 'forbidden access'})
+      // }
       let query = {};
       const { email } = req.query;
       if (email) {
